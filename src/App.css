@@ -1,0 +1,68 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+body{
+  margin: 20px;
+}
+
+.circle-style{
+  width: 3rem;
+  height: 3rem;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block; /*circle disappears without this*/
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem;
+  grid-template-rows: 3rem 3rem 3rem;
+}
+
+/*
+.one-a{
+  display: static;
+}
+.one-b{
+  display: static;
+}
+.one-c{
+  display: static;
+}
+.two-a{
+  display: static;
+}
+.two-b{
+  display: static;
+}
+.two-c{
+  display: static;
+}
+.three-a{
+  display: static;
+}
+.three-b{
+  display: static;
+}
+.three-c{
+  display: static;
+}
+.one-a{
+  display: static;
+} */
