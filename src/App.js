@@ -2,11 +2,7 @@
 import './App.css';
 import React from 'react';
 
-{/*OBJECTIVES FOR TODAY
-- figure out how to make button disabled
-*/}
-
-{/*Colors*/}
+//Colors
 const red = {
   backgroundColor: "#ea5545"
 }
@@ -35,7 +31,7 @@ const purple = {
 let colorsArrayDefault = [red, pink, darkOrange, lightOrange, 
   yellow, green, blue, purple];
 
-{/*Cells*/}
+//Cells
 const cellOneOne = {
   gridRow: 1,
   gridColumn: 1
@@ -139,13 +135,13 @@ class App extends React.Component {
   }
 
   selectButton (event, value, button, addDelete){
-    if (addDelete == 'add') {
+    if (addDelete === 'add') {
       guessValues.push(value)
     } else {
       guessValues.splice(guessValues.indexOf(value), 1)
     }
 
-    if(this.state.gameStarted == false){
+    if(this.state.gameStarted === false){
       return
     }else{
       switch(button){
@@ -193,6 +189,9 @@ class App extends React.Component {
         this.setState({
           selectedEight: !this.state.selectedEight
         });
+        break;
+      default:
+        return
     }
     }
     
@@ -203,7 +202,7 @@ class App extends React.Component {
       render: true
     })
 
-    if(guessValues.length == 2 && guessValues[0] == guessValues[1]){
+    if(guessValues.length === 2 && guessValues[0] === guessValues[1]){
       this.setState({
         result: 'Correct! You Win.'
       })
@@ -337,30 +336,3 @@ class App extends React.Component {
 }
 
 export default App;
-{/*
-
-          <button style={{...this.state.colorsArray[1], ...this.state.cellsArray[1], ...noBorder}} 
-            onClick={event => this.selectButton(event, 0)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[2], ...this.state.cellsArray[2], ...noBorder}} 
-            onClick={event => this.selectButton(event, 2)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[3], ...this.state.cellsArray[3], ...noBorder}} 
-            onClick={event => this.selectButton(event, 3)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[4], ...this.state.cellsArray[4], ...noBorder}} 
-            onClick={event => this.selectButton(event, 4)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[5], ...this.state.cellsArray[5], ...noBorder}} 
-            onClick={event => this.selectButton(event, 5)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[6], ...this.state.cellsArray[6], ...noBorder}} 
-            onClick={event => this.selectButton(event, 6)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[7], ...this.state.cellsArray[7], ...noBorder}} 
-            onClick={event => this.selectButton(event, 7)}
-            className='circle-style'></button>
-          <button style={{...this.state.colorsArray[this.state.randomNum], ...this.state.cellsArray[8], ...noBorder}} 
-            onClick={event => this.selectButton(event, this.state.randomNum)}
-            className='circle-style'></button>
-*/}
