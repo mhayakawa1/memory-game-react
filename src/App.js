@@ -135,7 +135,7 @@ class App extends React.Component {
       this.setState({
         render: false
       })
-      }.bind(this), 1000)
+      }.bind(this), 500)
   }
 
   selectButton (event, value, button, addDelete){
