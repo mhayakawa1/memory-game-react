@@ -75,7 +75,7 @@ const noBorder = {
   border: 0
 }
 
-let guessValues = [];
+let guessValues = []; //Values of selected buttons
 
 class App extends React.Component {
   constructor(props){
@@ -83,7 +83,6 @@ class App extends React.Component {
     this.state = {
       gameStarted: false,
       colorsArray: [],
-      cellsArray: [],
       randomNum: 0,
       render: false,
       selectedZero: false,
@@ -103,10 +102,9 @@ class App extends React.Component {
   }
 
   gameRound() {
-    guessValues = [];
-    this.setState({
+    guessValues = []; //Set guessValues to empty array
+    this.setState({ //set values to default state
       gameStarted: false,
-      cellsArray: [],
       randomNum: 0,
       render: false,
       selectedZero: false,
@@ -120,30 +118,31 @@ class App extends React.Component {
       selectedEight: false,
       result: ''
     })
+
     this.setState({
-      gameStarted: true,
-      colorsArray: colorsArrayDefault.sort(() => Math.random() - 0.5),
-      randomNum: Math.floor(Math.random() * (8)),
-      render: true
+      gameStarted: true, //allow buttons to be clicked
+      colorsArray: colorsArrayDefault.sort(() => Math.random() - 0.5), //set to array of randomly sorted values in colorsArrayDefault
+      randomNum: Math.floor(Math.random() * (8)), //set to random number from 0-7
+      render: true //turn buttons from black to colored
     })
 
-    setTimeout(function() {
+    setTimeout(function(){ //turn buttons from colored to black after .5 second
       this.setState({
         render: false
       })
       }.bind(this), 500)
   }
 
-  selectButton (event, value, button, addDelete){
-    if (addDelete === 'add') {
+  selectButton (event, value, button, addDelete){ //called when black buttons are clicked
+    if (addDelete === 'add'){ //if addDelete is 'add' push number value to guessValues
       guessValues.push(value)
-    } else {
-      guessValues.splice(guessValues.indexOf(value), 1)
+    } else { //if addDelete is 'delete' remove number value from guessValues
+      guessValues.splice(guessValues.indexOf(value), 1) 
     }
 
-    if(this.state.gameStarted === false){
+    if(this.state.gameStarted === false){ //if game is not started, nothing happens when button is clicked
       return
-    }else{
+    }else{ //if game is started allow buttons to turn grey when clicked by switching from false to true
       switch(button){
       case 'button0':
         this.setState({
@@ -192,32 +191,32 @@ class App extends React.Component {
         break;
       default:
         return
+      }
     }
-    }
-    
   }
 
   submit(){
-    this.setState({
+    this.setState({ //turn buttons from black to colored
       render: true
     })
 
+    //if guessValues has two elements that are equal to each other, return winning text
     if(guessValues.length === 2 && guessValues[0] === guessValues[1]){
       this.setState({
         result: 'Correct! You Win.'
       })
-    }else{
+    }else{ //else, return losing text
       this.setState({
         result: 'Wrong! You Lose.'
       })
     }
   }
 
-  render(){
+  render(){ //
     const unselected = {backgroundColor: 'black'};
     const selected = {backgroundColor: '#505050'};
     let display = null
-    if(this.state.render) {
+    if(this.state.render) { //if render is true set display to buttons with randomized colors and fixed grid positions
       display =
         <div className='grid'>
           <button style={{...this.state.colorsArray[0], ...cellsArrayDefault[0], ...noBorder}}
@@ -239,16 +238,16 @@ class App extends React.Component {
           <button style={{...this.state.colorsArray[this.state.randomNum], ...cellsArrayDefault[8], ...noBorder}}
             className='circle-style'></button>
         </div>
-    }else{
+    }else{ //if render is false set display to black buttons that turn grey when clicked
       display =
         <div className='grid'>
-          <div>
+          <div> 
               {this.state.selectedZero === true ? <button style={{...selected, ...cellsArrayDefault[0], ...noBorder}}
               onClick={event => this.selectButton(event, 0, 'button0', 'delete')}
-              className='circle-style'></button>
+              className='circle-style'></button> //when selectedZero is true, display grey button, delete number value from guessValues when clicked
                 : <button style={{...unselected, ...cellsArrayDefault[0], ...noBorder}}
-                onClick={event => this.selectButton(event, 0, 'button0', 'add')}
-                className='circle-style'></button>}
+                onClick={event => this.selectButton(event, 0, 'button0', 'add')} //when selectedZero is false, display black button, add number value to guessValues when clicked
+                className='circle-style'></button>} 
           </div>
           <div>
               {this.state.selectedOne === true ? <button style={{...selected, ...cellsArrayDefault[1], ...noBorder}}
@@ -317,19 +316,24 @@ class App extends React.Component {
         </div>
     }
     return(
-      <div>
-        <h1>Memory Game</h1>
-        <p>Select the matching colors</p>
+      <div className='container'>
+        <div className='titleHeader'>
+          <h1>Memory Game</h1>
+          <h2>Select the matching colors</h2>
+        </div>
 
-        {display}
-        
-        <div>
-          <button onClick={this.gameRound}>New Round</button>
+        <div className='game'>
+          {display //return buttons grid
+          }
+          <div className='control-btn-pair'>
+            <button className='control-btn' onClick={this.gameRound}>New Round</button>
+            <button className='control-btn' onClick={this.submit}>Submit</button>
+          </div>
+
+          <p className='result'>{this.state.result //return win/lose text
+            }</p>
         </div>
-        <div>
-          <button onClick={this.submit}>Submit</button>
-        </div>
-        <p>{this.state.result}</p>
+
       </div> 
     )
   }
