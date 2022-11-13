@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+/*
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -15,54 +16,120 @@
 
 .App-link {
   color: #61dafb;
-}
+}*/
+
+/*
+https://www.colorhexa.com/27aeef
+https://www.heavy.ai/blog/12-color-palettes-for-telling-better-stories-with-your-data
+https://support.amuse.io/hc/en-us/articles/360020150018-YouTube-Topic-Channels
+*/
 
 body{
-  margin: 20px;
+  background: linear-gradient(#f8c6c0, #b9e5fa);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;  
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  display: flex;
+}
+
+@media screen and (max-width: 550px){
+  .container{
+    flex-direction: column;
+  }
+}
+
+.center{
+  justify-content: center;
+}
+
+.game{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 6rem auto 0 auto;
+}
+
+@media screen and (max-width: 550px){
+  .game{
+    margin: 2rem auto 0 auto;
+  }
+}
+
+.titleHeader{
+  background-color: black;
+  color: white;
+  width: 30%;
+  height: 100vh;
+  text-align: center;
+  padding: 0 2rem 0 2rem;
+}
+
+h1{
+  margin: 10rem 0 0 0;
+  font-size: 2.5rem;
+}
+
+@media screen and (max-width: 550px){
+  .titleHeader{
+    width: 100%;
+    height: 20vh;
+    padding: 0;
+  }
+  h1{
+    margin: .5rem 0 -.5rem 0;
+  }
+}
+
+h2{
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .circle-style{
-  width: 3rem;
-  height: 3rem;
+  width: 6rem;
+  height: 6rem;
   background-color: black;
   border-radius: 50%;
-  display: inline-block; /*circle disappears without this*/
+  display: inline-block;
 }
 
 .grid{
   display: grid;
-  grid-template-columns: 3rem 3rem 3rem;
-  grid-template-rows: 3rem 3rem 3rem;
+  grid-template-columns: 6rem 6rem 6rem;
+  grid-template-rows: 6rem 6rem 6rem;
+  width: 18rem;
+  height: 18rem;
+  background-color: white;
+  border: .5rem solid white;
+  border-radius: 5px;
+  filter: drop-shadow(10px 10px 0px black);
 }
 
-/*
-.one-a{
-  display: static;
+.control-btn-pair{
+  margin: 1.5rem 0 0 0;
+  display: flex;
+  gap: 1rem;
 }
-.one-b{
-  display: static;
+
+.control-btn{
+  background-color: white;
+  height: 1.5rem;
+  padding: 0 10px 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  filter: drop-shadow(5px 5px 0px black);
+  font-family: 'Poppins', sans-serif;
 }
-.one-c{
-  display: static;
+
+.result{
+  font-size: 1.5rem;
 }
-.two-a{
-  display: static;
-}
-.two-b{
-  display: static;
-}
-.two-c{
-  display: static;
-}
-.three-a{
-  display: static;
-}
-.three-b{
-  display: static;
-}
-.three-c{
-  display: static;
-}
-.one-a{
-  display: static;
-} */
