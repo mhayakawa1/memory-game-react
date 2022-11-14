@@ -319,7 +319,7 @@ class App extends React.Component {
       <div className='container'>
         <div className='titleHeader'>
           <h1>Memory Game</h1>
-          <h2>Select the matching colors</h2>
+          <h2>You have half a second to view the colors. Then, select the two circles that match.</h2>
         </div>
 
         <div className='game'>
