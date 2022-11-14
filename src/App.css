@@ -96,7 +96,17 @@ h2{
   font-weight: normal;
 }
 
-.circle-style{
+@media screen and (max-width: 320px){
+  h1{
+    margin: 0 0 -.5rem 0;
+    font-size: 2rem;
+  }
+  h2{
+    font-size: .75rem;
+  }
+}
+
+.circle-style{ 
   width: 6rem;
   height: 6rem;
   background-color: black;
@@ -114,6 +124,19 @@ h2{
   border: .5rem solid white;
   border-radius: 5px;
   filter: drop-shadow(10px 10px 0px black);
+}
+
+@media screen and (max-width: 320px){
+  .circle-style{
+    width: 4rem;
+    height: 4rem;
+  }
+  .grid{
+    grid-template-columns: 4rem 4rem 4rem;
+    grid-template-rows: 4rem 4rem 4rem;
+    width: 12rem;
+    height: 12rem;
+  }
 }
 
 .control-btn-pair{
@@ -135,4 +158,10 @@ h2{
 
 .result{
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 320px){
+  .result{
+    font-size: 1rem;
+  }
 }
