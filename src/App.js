@@ -1,6 +1,10 @@
-//import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+
+{/*OJECTIVES FOR TODAY
+- Don't display result text when game hasn't started
+- Fix CSS media queries, make text area narrower
+*/}
 
 //Colors
 const red = {
@@ -196,18 +200,21 @@ class App extends React.Component {
   }
 
   submit(){
-    this.setState({ //turn buttons from black to colored
-      render: true
-    })
+    //display different string depending on whether player wins/loses
+    //only change state if two values have been selected
+    //change nothing if game hasn't started or <2 values are selected
 
-    //if guessValues has two elements that are equal to each other, return winning text
+    //if guessValues has two elements that are equal to each other, set result to winning text
     if(guessValues.length === 2 && guessValues[0] === guessValues[1]){
       this.setState({
-        result: 'Correct! You Win.'
+        result: 'Correct! You Win.',
+        render: true //turn buttons from black to colored
       })
-    }else{ //else, return losing text
+    //if guessValues has two elements not equal to each other, set result to losing text
+    }else if(guessValues.length === 2 && guessValues[0] !== guessValues[1]){
       this.setState({
-        result: 'Wrong! You Lose.'
+        result: 'Wrong! You Lose.',
+        render: true //turn buttons from black to colored
       })
     }
   }
@@ -324,7 +331,7 @@ class App extends React.Component {
 
         <div className='game'>
           {display //return buttons grid
-          }
+            }
           <div className='control-btn-pair'>
             <button className='control-btn' onClick={this.gameRound}>New Round</button>
             <button className='control-btn' onClick={this.submit}>Submit</button>
