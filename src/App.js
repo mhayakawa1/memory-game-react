@@ -1,11 +1,6 @@
 import './App.css';
 import React from 'react';
 
-{/*OJECTIVES FOR TODAY
-- Don't display result text when game hasn't started
-- Fix CSS media queries, make text area narrower
-*/}
-
 //Colors
 const red = {
   backgroundColor: "#ea5545"
